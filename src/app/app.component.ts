@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 import {
   CdkDragDrop,
   CdkDropList,
@@ -10,7 +15,7 @@ import {
   CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-
+import { AddDriverDialogComponent } from './add-driver-dialog/add-driver-dialog.component';
 @Component({
   selector: 'app-root',
   imports: [
@@ -22,10 +27,12 @@ import {
     CdkDrag,
     CdkDragHandle,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  constructor(private dialog: MatDialog, private cdRef: ChangeDetectorRef) {}
   title = '24h-helper';
   drivers = [
     'Marco',
@@ -37,6 +44,16 @@ export class AppComponent {
     'Lisa',
     'Tom',
   ];
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddDriverDialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.drivers.push(result);
+        this.cdRef.detectChanges();
+      }
+    });
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

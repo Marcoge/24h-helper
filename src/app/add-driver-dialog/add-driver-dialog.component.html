@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Add a driver!</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" /> </mat-form-field
+></mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onAdd()" cdkFocusInitial>Add</button>
+</mat-dialog-actions>
