@@ -4,10 +4,11 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "chrome",
+      "type": "firefox",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "reAttach": true,
+      "preLaunchTask": "npm: debug",
+      "url": "http://localhost:4200/",
     },
     {
       "name": "ng test",
