@@ -6,13 +6,18 @@ body {
   gap: 10px;
 }
 
+.input-field-driver {
+  display: flex;
+  width: 75%;
+}
+
 .driver-adding-container {
   display: flex;
   flex: 0 1 auto;
   height: fit-content;
   align-items: baseline;
   justify-content: center;
-  column-gap: 50px;
+  column-gap: 20px;
 }
 
 .driver-list {

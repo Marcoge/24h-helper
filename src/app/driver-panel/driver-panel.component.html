@@ -1,6 +1,8 @@
 <body>
   <div class="driver-adding-container">
-    <b>Drivers</b>
+    <mat-form-field class="input-field-driver">
+      <input matInput placeholder="Add Driver" [(ngModel)]="(driver)" />
+    </mat-form-field>
     <button mat-flat-button (click)="addDriver()">Add</button>
   </div>
   <mat-divider></mat-divider>
