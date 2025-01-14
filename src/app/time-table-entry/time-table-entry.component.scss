@@ -1,0 +1,19 @@
+body {
+  margin: 2;
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+.stint-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.stint-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 200px;
+}

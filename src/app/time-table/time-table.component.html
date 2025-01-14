@@ -1,0 +1,12 @@
+<body>
+  <mat-toolbar class="header-bar">
+    <span><b>Stints</b></span>
+  </mat-toolbar>
+  <mat-list class="stint-list">
+    @for (timeTableEntry of timeTableEntries; track timeTableEntries){
+    <mat-list-item>
+      <app-time-table-entry [entry]="timeTableEntry"></app-time-table-entry>
+    </mat-list-item>
+    }
+  </mat-list>
+</body>
