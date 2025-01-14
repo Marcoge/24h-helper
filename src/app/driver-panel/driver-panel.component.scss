@@ -74,7 +74,7 @@ body {
 
 .driver-handle {
   cursor: move;
-  color: saturate($color: Blue, $amount: 50);
+  color: desaturate($color: blue, $amount: 65);
 }
 
 .driver-delete-container {
