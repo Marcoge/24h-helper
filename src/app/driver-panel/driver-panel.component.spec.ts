@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddDriverDialogComponent } from './add-driver-dialog.component';
+import { DriverPanelComponent } from './driver-panel.component';
 
-describe('AddDriverDialogComponent', () => {
-  let component: AddDriverDialogComponent;
-  let fixture: ComponentFixture<AddDriverDialogComponent>;
+describe('DriverPanelComponent', () => {
+  let component: DriverPanelComponent;
+  let fixture: ComponentFixture<DriverPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddDriverDialogComponent]
+      imports: [DriverPanelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddDriverDialogComponent);
+    fixture = TestBed.createComponent(DriverPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

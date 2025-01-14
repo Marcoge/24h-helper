@@ -1,0 +1,40 @@
+<body>
+  <div class="driver-adding-container">
+    <b>Drivers</b>
+    <button mat-flat-button (click)="addDriver()">Add</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div
+    class="driver-list"
+    cdkDropList
+    #driverList="cdkDropList"
+    [cdkDropListConnectedTo]="[driverDelete]"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (driver of drivers; track driver) {
+    <div class="driver-box" cdkDragLockAxis="y" cdkDrag>
+      {{ driver }}
+      <div class="driver-handle" cdkDragHandle>
+        <svg width="22px" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"
+          ></path>
+          <path d="M0 0h24v24H0z" fill="none"></path>
+        </svg>
+      </div>
+    </div>
+    }
+  </div>
+  <mat-divider></mat-divider>
+  <div
+    class="driver-delete-container"
+    cdkDropList
+    #driverDelete="cdkDropList"
+    [cdkDropListConnectedTo]="[driverList]"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <button mat-fab color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</body>
