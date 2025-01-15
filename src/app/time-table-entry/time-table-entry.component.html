@@ -1,9 +1,31 @@
 <body>
   <mat-card class="stint-container" appearance="outlined">
     <mat-card-content class="stint-content">
-      <span>{{ entry.driver }}</span>
-      <span>{{ entry.start }}</span>
-      <span>{{ entry.end }}</span>
+      <mat-form-field>
+        <mat-label>Driver</mat-label>
+        <mat-select>
+          @for (name of names; track name) {
+          <mat-option [value]="name">{{ name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Start</mat-label>
+          <input matInput />
+          <mat-icon matSuffix>watch_later</mat-icon>
+          <mat-hint>00:00-24:00</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>End</mat-label>
+          <input matInput />
+          <mat-icon matSuffix>watch_later</mat-icon>
+          <mat-hint>00:00-24:00</mat-hint>
+        </mat-form-field>
+      </div>
+      <div><mat-checkbox>Heavy Turn</mat-checkbox></div>
     </mat-card-content>
   </mat-card>
 </body>

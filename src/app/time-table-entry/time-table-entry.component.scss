@@ -2,18 +2,23 @@ body {
   margin: 2;
   display: flex;
   flex: 1;
-  gap: 10px;
 }
 
 .stint-container {
   display: flex;
   flex: 1;
   flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 .stint-content {
   display: flex;
   flex: 1;
   justify-content: center;
-  gap: 200px;
+  align-items: baseline;
+  column-gap: 100px;
+}
+
+.driver-name {
+  width: 25%;
 }

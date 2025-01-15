@@ -13,7 +13,12 @@ body {
 }
 
 .stint-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stint-item {
+  flex: 1;
 }

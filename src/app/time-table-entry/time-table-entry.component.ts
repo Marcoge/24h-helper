@@ -1,14 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-time-table-entry',
-  imports: [MatCardModule],
+  imports: [
+    MatCardModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+  ],
   templateUrl: './time-table-entry.component.html',
   styleUrl: './time-table-entry.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeTableEntryComponent {
   @Input() entry!: TimeTableEntry;
+
+  selected = 'driver';
+  names = ['laber', 'john', 'doe', 'smith', 'jane', 'brown'];
 }
 
 export interface TimeTableEntry {
