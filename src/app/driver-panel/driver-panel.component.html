@@ -1,7 +1,7 @@
 <body>
   <div class="driver-adding-container">
     <mat-form-field class="input-field-driver">
-      <input matInput placeholder="Add Driver" [(ngModel)]="(driver)" />
+      <input matInput placeholder="Add Driver" [(ngModel)]="driver" />
     </mat-form-field>
     <button mat-flat-button (click)="addDriver()">Add</button>
   </div>
@@ -13,7 +13,7 @@
     [cdkDropListConnectedTo]="[driverDelete]"
     (cdkDropListDropped)="drop($event)"
   >
-    @for (driver of drivers; track driver) {
+    @for (driver of drivers(); track driver) {
     <div class="driver-box" cdkDragLockAxis="y" cdkDrag>
       {{ driver }}
       <div class="driver-handle" cdkDragHandle>

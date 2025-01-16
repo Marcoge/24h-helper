@@ -13,6 +13,8 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
+import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-driver-panel',
   imports: [
@@ -28,34 +30,37 @@ import {
   ],
   templateUrl: './driver-panel.component.html',
   styleUrl: './driver-panel.component.scss',
+  providers: [DataService],
 })
 export class DriverPanelComponent {
   public driver = '';
-  drivers = [
-    'Marco',
-    'Flo',
-    'Sebastian',
-    'Markus',
-    'Anna',
-    'John',
-    'Lisa',
-    'Tom',
-  ];
+  public drivers = this.dataService.drivers;
+
+  constructor(private dataService: DataService) {}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(this.drivers, event.previousIndex, event.currentIndex);
+      this.dataService.drivers.update((value) => {
+        moveItemInArray(value, event.previousIndex, event.currentIndex);
+        return value;
+      });
     } else {
       if (confirm('Are you sure you want to remove this driver?')) {
-        this.drivers.splice(event.previousIndex, 1);
+        this.dataService.drivers.update((value) => {
+          value.splice(event.previousIndex, 1);
+          return value;
+        });
       }
     }
   }
 
   addDriver() {
     if (this.driver) {
-      this.drivers.push(this.driver);
+      this.dataService.drivers.update((drivers) => [...drivers, this.driver]);
       this.driver = '';
     }
   }
+}
+function WriteableSignal<T>(arg0: never[]) {
+  throw new Error('Function not implemented.');
 }
