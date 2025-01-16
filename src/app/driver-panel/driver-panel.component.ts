@@ -30,7 +30,6 @@ import { DataService } from '../data.service';
   ],
   templateUrl: './driver-panel.component.html',
   styleUrl: './driver-panel.component.scss',
-  providers: [DataService],
 })
 export class DriverPanelComponent {
   public driver = '';
@@ -60,7 +59,4 @@ export class DriverPanelComponent {
       this.driver = '';
     }
   }
-}
-function WriteableSignal<T>(arg0: never[]) {
-  throw new Error('Function not implemented.');
 }
