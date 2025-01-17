@@ -5,10 +5,19 @@ import {
   TimeTableEntryComponent,
   TimeTableEntry,
 } from '../time-table-entry/time-table-entry.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-time-table',
-  imports: [MatToolbarModule, MatListModule, TimeTableEntryComponent],
+  imports: [
+    MatToolbarModule,
+    MatListModule,
+    TimeTableEntryComponent,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './time-table.component.html',
   styleUrl: './time-table.component.scss',
 })
@@ -22,4 +31,8 @@ export class TimeTableComponent {
     { driver: 'jane', start: '13:00', end: '14:00' },
     { driver: 'brown', start: '14:00', end: '15:00' },
   ];
+
+  constructor(private dataService: DataService) {}
+
+  addStint() {}
 }

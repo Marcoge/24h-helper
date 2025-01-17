@@ -22,3 +22,10 @@ body {
 .stint-item {
   flex: 1;
 }
+
+.add-button {
+  color: --primary;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
