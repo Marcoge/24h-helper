@@ -3,9 +3,9 @@
     <span><b>Stints</b></span>
   </mat-toolbar>
   <mat-list class="stint-list">
-    @for (timeTableEntry of timeTableEntries; track timeTableEntries){
+    @for (stint of stints(); track stints){
     <mat-list-item class="stint-item">
-      <app-time-table-entry [entry]="timeTableEntry"></app-time-table-entry>
+      <app-time-table-entry [entry]="stint"></app-time-table-entry>
     </mat-list-item>
     }
   </mat-list>

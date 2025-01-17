@@ -3,15 +3,18 @@
     <mat-card-content class="stint-content">
       <mat-form-field>
         <mat-label>Driver</mat-label>
-        <mat-select>
-          @for (name of names; track name) {
-          <mat-option [value]="name">{{ name }}</mat-option>
+        <mat-select
+          [ngModel]="names()"
+          (ngModelChange)="onDriverSelected($event)"
+        >
+          @for (name of names(); track name) {
+          <mat-option [value]="name">{{ name }} </mat-option>
           }
         </mat-select>
       </mat-form-field>
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>Start</mat-label>
+          <mat-label>{{ entry().start }}</mat-label>
           <input matInput />
           <mat-icon matSuffix>watch_later</mat-icon>
           <mat-hint>00:00-24:00</mat-hint>
@@ -19,13 +22,15 @@
       </div>
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>End</mat-label>
+          <mat-label>{{ entry().end }}</mat-label>
           <input matInput />
           <mat-icon matSuffix>watch_later</mat-icon>
           <mat-hint>00:00-24:00</mat-hint>
         </mat-form-field>
       </div>
-      <div><mat-checkbox>Heavy Turn</mat-checkbox></div>
+      <div>
+        <mat-checkbox [(ngModel)]="entry().isHeavy">Heavy Turn</mat-checkbox>
+      </div>
       <div>
         <button mat-flat-button (click)="deleteStint()">Delete</button>
       </div>

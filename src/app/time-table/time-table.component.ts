@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import {
-  TimeTableEntryComponent,
-  TimeTableEntry,
-} from '../time-table-entry/time-table-entry.component';
+import { TimeTableEntryComponent } from '../time-table-entry/time-table-entry.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DataService } from '../data.service';
+import { Stint } from '../model/stint';
 
 @Component({
   selector: 'app-time-table',
@@ -22,17 +20,22 @@ import { DataService } from '../data.service';
   styleUrl: './time-table.component.scss',
 })
 export class TimeTableComponent {
-  timeTableEntry!: TimeTableEntry;
-  timeTableEntries: TimeTableEntry[] = [
-    { driver: 'laber', start: '09:00', end: '10:00' },
-    { driver: 'john', start: '10:00', end: '11:00' },
-    { driver: 'doe', start: '11:00', end: '12:00' },
-    { driver: 'smith', start: '12:00', end: '13:00' },
-    { driver: 'jane', start: '13:00', end: '14:00' },
-    { driver: 'brown', start: '14:00', end: '15:00' },
-  ];
+  stints = this.dataService.stints;
 
   constructor(private dataService: DataService) {}
 
-  addStint() {}
+  addStint() {
+    this.dataService.stints.update((stints) => {
+      return [
+        ...stints,
+        new Stint({
+          id: stints.length + 1,
+          driver: 'driver',
+          start: '00:00',
+          end: '12:00',
+          isHeavy: false,
+        }),
+      ];
+    });
+  }
 }
