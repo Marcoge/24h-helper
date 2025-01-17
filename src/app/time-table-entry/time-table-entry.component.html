@@ -4,7 +4,8 @@
       <mat-form-field>
         <mat-label>Driver</mat-label>
         <mat-select
-          [ngModel]="names()"
+          [(ngModel)]="selectedDriver"
+          name="driverSelect"
           (ngModelChange)="onDriverSelected($event)"
         >
           @for (name of names(); track name) {
@@ -14,22 +15,33 @@
       </mat-form-field>
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>{{ entry().start }}</mat-label>
-          <input matInput />
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            [(ngModel)]="startTime"
+            (ngModelChange)="onStartChanged($event)"
+          />
           <mat-icon matSuffix>watch_later</mat-icon>
           <mat-hint>00:00-24:00</mat-hint>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>{{ entry().end }}</mat-label>
-          <input matInput />
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            [(ngModel)]="endTime"
+            name="endTime"
+            (ngModelChange)="onEndChanged($event)"
+          />
           <mat-icon matSuffix>watch_later</mat-icon>
           <mat-hint>00:00-24:00</mat-hint>
         </mat-form-field>
       </div>
       <div>
-        <mat-checkbox [(ngModel)]="entry().isHeavy">Heavy Turn</mat-checkbox>
+        <mat-checkbox (change)="onHeavyChanged($event.checked)">
+          Heavy Turn
+        </mat-checkbox>
       </div>
       <div>
         <button mat-flat-button (click)="deleteStint()">Delete</button>

@@ -31,6 +31,9 @@ import { Stint } from '../model/stint';
 export class TimeTableEntryComponent {
   entry = input.required<Stint>();
   names = this.dataService.drivers;
+  selectedDriver: string = '';
+  startTime: string = '';
+  endTime: string = '';
 
   constructor(private dataService: DataService) {}
 
@@ -42,6 +45,43 @@ export class TimeTableEntryComponent {
         ...this.entry(),
         driver: name,
       });
+      return x;
+    });
+  }
+
+  onStartChanged(event: any) {
+    const start = event;
+    this.dataService.stints.update((x) => {
+      const index = x.indexOf(this.entry());
+      x[index] = new Stint({
+        ...this.entry(),
+        start,
+      });
+      return x;
+    });
+  }
+
+  onEndChanged(event: any) {
+    const end = event;
+    this.dataService.stints.update((x) => {
+      const index = x.indexOf(this.entry());
+      x[index] = new Stint({
+        ...this.entry(),
+        end,
+      });
+      return x;
+    });
+  }
+
+  onHeavyChanged(event: any) {
+    const isHeavy = event;
+    this.dataService.stints.update((x) => {
+      const index = x.indexOf(this.entry());
+      x[index] = new Stint({
+        ...this.entry(),
+        isHeavy,
+      });
+      console.log(x[index]);
       return x;
     });
   }
