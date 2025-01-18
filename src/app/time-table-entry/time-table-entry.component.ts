@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Stint } from '../model/stint';
+import e from 'express';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -31,10 +32,16 @@ import { Stint } from '../model/stint';
 export class TimeTableEntryComponent {
   entry = input.required<Stint>();
   names = this.dataService.drivers;
-  selectedDriver: string = '';
-  startTime: string = '';
-  endTime: string = '';
+  selectedDriver = '';
+  startTime = '';
+  endTime = '';
   timeChecker = new RegExp('^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$');
+
+  ngOnInit() {
+    this.selectedDriver = this.entry()?.driver ?? '';
+    this.startTime = this.entry()?.start ?? '';
+    this.endTime = this.entry()?.end ?? '';
+  }
 
   constructor(private dataService: DataService) {}
 
