@@ -1,5 +1,5 @@
 body {
-  display: flex;
+  // display: flex;
   margin: 0;
   height: 100vh;
   flex-direction: column;
@@ -10,6 +10,7 @@ body {
   justify-content: center;
   border: 1px solid black;
   border-radius: 25px;
+  height: 50px; 
 }
 
 .stint-list {
