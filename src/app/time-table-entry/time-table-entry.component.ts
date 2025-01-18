@@ -34,52 +34,36 @@ export class TimeTableEntryComponent {
   selectedDriver: string = '';
   startTime: string = '';
   endTime: string = '';
+  timeChecker = new RegExp('^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$');
 
   constructor(private dataService: DataService) {}
 
   onDriverSelected(event: any) {
-    const name = event;
-    this.dataService.stints.update((x) => {
-      const index = x.indexOf(this.entry());
-      x[index] = new Stint({
-        ...this.entry(),
-        driver: name,
-      });
-      return x;
-    });
+    this.updateStint('driver', event);
   }
 
   onStartChanged(event: any) {
-    const start = event;
-    this.dataService.stints.update((x) => {
-      const index = x.indexOf(this.entry());
-      x[index] = new Stint({
-        ...this.entry(),
-        start,
-      });
-      return x;
-    });
+    if (this.timeChecker.test(event)) {
+      this.updateStint('start', event);
+    }
   }
 
   onEndChanged(event: any) {
-    const end = event;
-    this.dataService.stints.update((x) => {
-      const index = x.indexOf(this.entry());
-      x[index] = new Stint({
-        ...this.entry(),
-        end,
-      });
-      return x;
-    });
+    if (this.timeChecker.test(event)) {
+      this.updateStint('end', event);
+    }
   }
 
   onHeavyChanged(event: any) {
-    const isHeavy = event;
+    this.updateStint('isHeavy', event);
+  }
+
+  updateStint(key: string, value: string) {
     this.dataService.stints.update((x) => {
       const index = x.indexOf(this.entry());
       x[index] = new Stint({
         ...this.entry(),
-        isHeavy,
+        [key]: value,
       });
       console.log(x[index]);
       return x;
