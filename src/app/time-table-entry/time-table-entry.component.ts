@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Stint } from '../model/stint';
-import e from 'express';
 
 @Component({
   selector: 'app-time-table-entry',
