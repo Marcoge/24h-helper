@@ -67,13 +67,17 @@ export class TimeTableEntryComponent {
   updateStint(key: string, value: string) {
     this.dataService.stints.update((x) => {
       const index = x.indexOf(this.entry());
-      x[index] = new Stint({
-        ...this.entry(),
-        [key]: value,
-      });
+      x[index] = { ...x[index], [key]: value };
       console.log(x[index]);
-      return x;
+      return [...x];
     });
+    // this.dataService.stints.update((stints) => 
+    //   stints.map((stint, idx) => 
+    //     idx === stints.indexOf(this.entry()) 
+    //       ? { ...stint, [key]: value }
+    //       : stint
+    //   )
+    // );
   }
 
   deleteStint() {

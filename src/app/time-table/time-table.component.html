@@ -4,7 +4,7 @@
   </mat-toolbar>
   <div class="list-container">
     <mat-list class="stint-list">
-      @for (stint of stints(); track stints){
+      @for (stint of stints(); track stint.id){
       <mat-list-item class="stint-item">
         <app-time-table-entry [entry]="stint"></app-time-table-entry>
       </mat-list-item>

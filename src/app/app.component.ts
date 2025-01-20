@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { DriverPanelComponent } from './driver-panel/driver-panel.component';
-import { TimeTableComponent } from "./time-table/time-table.component";
+import { TimeTableComponent } from './time-table/time-table.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,9 @@ import { TimeTableComponent } from "./time-table/time-table.component";
     MatDividerModule,
     MatIconModule,
     DriverPanelComponent,
-    TimeTableComponent
-],
+    TimeTableComponent,
+    SummaryComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
