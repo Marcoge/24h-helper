@@ -45,7 +45,7 @@ export class DataService {
       }
     });
     drivers.forEach((y) => {
-      summary.totalTimes.push({ driver: y, total: totalMap.get(y)! });
+      summary.totalTimes.push({ driver: y, total: totalMap.get(y)! || 0 });
     });
     summary.delta = this.calculateDelta(summary.totalTimes);
     return summary;
