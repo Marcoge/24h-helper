@@ -33,21 +33,23 @@ import { DataService } from '../data.service';
 })
 export class DriverPanelComponent {
   public driver = '';
-  public drivers = this.dataService.drivers;
+  public drivers;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {
+    this.drivers = this.dataService.drivers;
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       this.dataService.drivers.update((value) => {
         moveItemInArray(value, event.previousIndex, event.currentIndex);
-        return value;
+        return [...value];
       });
     } else {
       if (confirm('Are you sure you want to remove this driver?')) {
         this.dataService.drivers.update((value) => {
           value.splice(event.previousIndex, 1);
-          return value;
+          return [...value];
         });
       }
     }
