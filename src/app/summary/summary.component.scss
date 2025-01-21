@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+}

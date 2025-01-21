@@ -14,7 +14,6 @@ export class DataService {
   });
 
   private computeSummary(stintList: Stint[]): Summary {
-    console.log('Computing summary');
     let summary = new Summary([], '00:00');
     let start: Date;
     let end: Date;
@@ -32,12 +31,16 @@ export class DataService {
         start = new Date(`2021-01-01T${x.start}:00`);
         end = new Date(`2021-01-01T${x.end}:00`);
       }
+      let totalTime = end.getTime() - start.getTime();
+      if (x.isHeavy) {
+        summary.heavyTotal += totalTime;
+      }
       if (!totalMap.has(x.driver)) {
-        totalMap.set(x.driver, end.getTime() - start.getTime());
+        totalMap.set(x.driver, totalTime);
       } else {
         totalMap.set(
           x.driver,
-          totalMap.get(x.driver)! + (end.getTime() - start.getTime())
+          totalMap.get(x.driver)! + totalTime
         );
       }
     });
@@ -45,7 +48,6 @@ export class DataService {
       summary.totalTimes.push({ driver: y, total: totalMap.get(y)! });
     });
     summary.delta = this.calculateDelta(summary.totalTimes);
-
     return summary;
   }
 
