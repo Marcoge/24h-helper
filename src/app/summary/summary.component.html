@@ -1,16 +1,27 @@
 <body>
-  <div>Delta Driver 1-5: {{ summary().delta }}</div>
   <div>
-    Total Heavy Time: {{ getHours(summary().heavyTotal) }}:{{
-      getMinutes(summary().heavyTotal)
-    }} hh:mm
+    <div class="totals">
+      <div>Delta Driver 1-5:</div>
+      <div>{{ summary().delta }}</div>
+    </div>
+    <div class="totals">
+      <div>Total Heavy Time:</div>
+      <div>
+        {{ getHours(summary().heavyTotal) }}:{{
+          getMinutes(summary().heavyTotal)
+        }}
+        hh:mm
+      </div>
+    </div>
   </div>
   <div class="list-container">
     <mat-list class="list">
       @for (total of summary().totalTimes; track $index) {
-      <mat-list-item class="list-item">
-        <span>{{ total.driver }}: </span>
-        <span>{{ getHours(total.total) }}:{{ getMinutes(total.total) }} </span>
+      <mat-list-item>
+        <div class="list-item">
+          <div>{{ total.driver }}:</div>
+          <div>{{ getHours(total.total) }}:{{ getMinutes(total.total) }}</div>
+        </div>
       </mat-list-item>
       }
     </mat-list>
