@@ -57,6 +57,8 @@ export class DriverPanelComponent {
 
   addDriver() {
     if (this.driver) {
+      //restricting length of driver name to 16 characters due to layout reasons.
+      this.driver = this.driver.substring(0, 17);
       this.dataService.drivers.update((drivers) => [...drivers, this.driver]);
       this.driver = '';
     }
