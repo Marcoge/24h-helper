@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 body {
   margin: 0;
   display: flex;
@@ -74,7 +76,7 @@ body {
 
 .driver-handle {
   cursor: move;
-  color: desaturate($color: blue, $amount: 65);
+  color: color.adjust($color: blue, $saturation: -65%);
 }
 
 .driver-delete-container {
