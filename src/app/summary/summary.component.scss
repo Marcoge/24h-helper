@@ -1,6 +1,13 @@
+@use "@angular/material" as mat;
+
 body {
   display: flex;
   flex-direction: column;
+  @include mat.theme((
+    color: mat.$violet-palette,
+    typography: Roboto,
+    density: -3,
+  ));
 }
 
 .totals {
@@ -20,8 +27,8 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  row-gap: 10px;
 }
+
 
 .list-item {
   display: flex;
