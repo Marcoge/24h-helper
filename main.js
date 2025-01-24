@@ -17,6 +17,9 @@ function createWindow() {
     window.focus();
   });
 
+  window.removeMenu();
+  window.maximize();
+
   window.loadFile("dist/24h-helper/browser/index.html");
 }
 
