@@ -1,8 +1,27 @@
 # 24hHelper
 
+Ths app is meant to help particpants of the 24 hour kart race in Grimma, Germany with the constraints put on the time a driver has to spent racing in relation to his/her teammates. See Rules chapter for further info.
+
+## Usage and constraints
+
+- Add a Driver on the top left.
+- Driver list can be reordered at any time.
+- Driver order will be taken into account when calculating total times.
+- Add stints with the floating fab in the lower right corner.
+- The app checks that only syntactically correct times (00:00 - 24:00) are accepted.
+- There are curently no sanity checks for overlapping stints or stints that have a negative duration.
+
+## Rules
+The rules implemented for total driving time and delta between drivers are according to the latest ruleset for the Grimma 24 hour kart race. 
+
+- The delta of time spent on track for drivers 1 through 5 must not be greater than one (1) hour. Drivers 6 and up are not taken into consideration for this calculation.
+- Time spent driving heavy turns must be at least four (4) hours.
+
+## Development
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
-## Development server
+### Development server
 
 To start a local development server, run:
 
@@ -10,50 +29,3 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
