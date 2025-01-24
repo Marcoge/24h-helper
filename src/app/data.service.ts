@@ -1,4 +1,4 @@
-import { computed, Injectable, Signal, signal } from '@angular/core';
+import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 import { Stint } from './model/stint';
 import { Summary, DriverTotal } from './model/summary';
 
@@ -6,12 +6,25 @@ import { Summary, DriverTotal } from './model/summary';
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
   public drivers = signal<String[]>([]);
   public stints = signal<Stint[]>([]);
+
   public summary: Signal<Summary> = computed(() => {
     return this.computeSummary(this.stints());
   });
+
+  private driverStorageEffect = effect(() => {
+    if (this.drivers().length > 0) {
+      localStorage.setItem('drivers', JSON.stringify(this.drivers()));
+    }
+  });
+  private stintStorageEffect = effect(() => {
+    if (this.stints().length > 0) {
+      localStorage.setItem('stints', JSON.stringify(this.stints()));
+    }
+  });
+
+  constructor() {}
 
   private computeSummary(stintList: Stint[]): Summary {
     let summary = new Summary([], '00:00');
@@ -38,10 +51,7 @@ export class DataService {
       if (!totalMap.has(x.driver)) {
         totalMap.set(x.driver, totalTime);
       } else {
-        totalMap.set(
-          x.driver,
-          totalMap.get(x.driver)! + totalTime
-        );
+        totalMap.set(x.driver, totalMap.get(x.driver)! + totalTime);
       }
     });
     drivers.forEach((y) => {
