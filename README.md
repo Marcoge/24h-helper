@@ -21,6 +21,20 @@ The rules implemented for total driving time and delta between drivers are accor
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
+To run this project you will neeed: 
+- NodeJS version >= 22.11.0
+- Angular version >= 19.0.7
+
+
+### Setup
+
+- Clone the repository
+- In project directory run:
+
+```bash
+npm install
+```
+
 ### Development server
 
 To start a local development server, run:
@@ -29,3 +43,12 @@ To start a local development server, run:
 ng serve
 ```
 
+Open browser and go to [http://localhost:4200](http://localhost:4200)
+
+### Electron 
+
+To run app in electron, run: 
+
+```bash
+npm run start
+```
