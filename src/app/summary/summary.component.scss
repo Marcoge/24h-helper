@@ -1,15 +1,5 @@
 @use "@angular/material" as mat;
 
-body {
-  display: flex;
-  flex-direction: column;
-  @include mat.theme((
-    color: mat.$violet-palette,
-    typography: Roboto,
-    density: -3,
-  ));
-}
-
 .totals {
   display: flex;
   flex-direction: row;
