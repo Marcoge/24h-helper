@@ -7,6 +7,7 @@ function createWindow() {
     width: 1280,
     height: 768,
     show: false,
+    focusable: true,
     webPreferences: { 
         contextIsolation: true,
         preload: `${__dirname}/preload.js` },
