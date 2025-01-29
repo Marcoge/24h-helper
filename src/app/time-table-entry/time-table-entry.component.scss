@@ -21,6 +21,7 @@
 
 .delete-button {
   @include mat.button-overrides((
-    filled-container-color: #FFC107
+    filled-container-color: #FFC107,
+    filled-label-text-color: black
   ));
 }
