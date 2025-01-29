@@ -71,20 +71,13 @@ export class TimeTableEntryComponent {
       console.log(x[index]);
       return [...x];
     });
-    // this.dataService.stints.update((stints) => 
-    //   stints.map((stint, idx) => 
-    //     idx === stints.indexOf(this.entry()) 
-    //       ? { ...stint, [key]: value }
-    //       : stint
-    //   )
-    // );
   }
 
   deleteStint() {
     if (confirm('Are you sure you want to delete this entry?')) {
       this.dataService.stints.update((value) => {
         value.splice(value.indexOf(this.entry()), 1);
-        return value;
+        return [...value];
       });
     }
   }
