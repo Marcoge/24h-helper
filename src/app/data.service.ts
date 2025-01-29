@@ -6,6 +6,12 @@ import { Summary, DriverTotal } from './model/summary';
   providedIn: 'root',
 })
 export class DataService {
+  /**
+   * The state protection variables are a workaround for the fact that the effects are triggered
+   * on startup and would overwrite the local storage with empty arrays losing the saved states.
+   */
+  private stateProtectionOnLoadDriver = true;
+  private stateProtectionOnLoadStint = true;
   public drivers = signal<String[]>([]);
   public stints = signal<Stint[]>([]);
 
@@ -14,13 +20,15 @@ export class DataService {
   });
 
   private driverStorageEffect = effect(() => {
-    if (this.drivers().length > 0) {
+    if (this.drivers().length > 0 || !this.stateProtectionOnLoadDriver) {
       localStorage.setItem('drivers', JSON.stringify(this.drivers()));
+      this.stateProtectionOnLoadDriver = false;
     }
   });
   private stintStorageEffect = effect(() => {
-    if (this.stints().length > 0) {
+    if (this.stints().length > 0 || !this.stateProtectionOnLoadStint) {
       localStorage.setItem('stints', JSON.stringify(this.stints()));
+      this.stateProtectionOnLoadStint = false;
     }
   });
 
