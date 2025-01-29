@@ -34,7 +34,6 @@ export class TimeTableEntryComponent {
   selectedDriver = '';
   startTime = '';
   endTime = '';
-  timeChecker = new RegExp('^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$');
 
   ngOnInit() {
     this.selectedDriver = this.entry()?.driver ?? '';
@@ -49,15 +48,11 @@ export class TimeTableEntryComponent {
   }
 
   onStartChanged(event: any) {
-    if (this.timeChecker.test(event)) {
-      this.updateStint('start', event);
-    }
+    this.updateStint('start', event);
   }
 
   onEndChanged(event: any) {
-    if (this.timeChecker.test(event)) {
-      this.updateStint('end', event);
-    }
+    this.updateStint('end', event);
   }
 
   onHeavyChanged(event: any) {
