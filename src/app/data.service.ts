@@ -43,7 +43,7 @@ export class DataService {
     stintList.forEach((x) => {
       if (
         //special case for stints that start before and end after midnight
-        parseInt(x.start.split(':')[0]) <= 22 &&
+        parseInt(x.start.split(':')[0]) >= 22 &&
         parseInt(x.end.split(':')[0]) <= 2
       ) {
         start = new Date(`2021-01-01T${x.start}:00`);
