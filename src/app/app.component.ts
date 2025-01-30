@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DriverPanelComponent } from './driver-panel/driver-panel.component';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { SummaryComponent } from './summary/summary.component';
-import { DataService } from './data.service';
+import { StorageService } from './storage.service';
 
 @Component({
   selector: 'app-root',
@@ -25,18 +25,9 @@ import { DataService } from './data.service';
 export class AppComponent {
   title = '24h-helper';
 
-  constructor(private dataService: DataService) {}
+  constructor(private storageService: StorageService) {}
 
   ngOnInit() {
-    this.dataService.drivers.set(
-      localStorage.getItem('drivers')
-        ? JSON.parse(localStorage.getItem('drivers')!)
-        : []
-    );
-    this.dataService.stints.set(
-      localStorage.getItem('stints')
-        ? JSON.parse(localStorage.getItem('stints')!)
-        : []
-    );
+    this.storageService.loadFromStorage();
   }
 }
