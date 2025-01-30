@@ -34,14 +34,14 @@ export class TimeTableEntryComponent {
   selectedDriver = '';
   startTime = '';
   endTime = '';
+  
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.selectedDriver = this.entry()?.driver ?? '';
     this.startTime = this.entry()?.start ?? '';
     this.endTime = this.entry()?.end ?? '';
   }
-
-  constructor(private dataService: DataService) {}
 
   onDriverSelected(event: any) {
     this.updateStint('driver', event);
@@ -63,7 +63,6 @@ export class TimeTableEntryComponent {
     this.dataService.stints.update((x) => {
       const index = x.indexOf(this.entry());
       x[index] = { ...x[index], [key]: value };
-      console.log(x[index]);
       return [...x];
     });
   }
