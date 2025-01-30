@@ -26,16 +26,33 @@ export class TimeTableComponent {
 
   addStint() {
     this.dataService.stints.update((stints) => {
-      return [
-        ...stints,
-        new Stint({
-          id: stints.length + 1,
-          driver: 'driver',
-          start: '00:00',
-          end: '12:00',
-          isHeavy: false,
-        }),
-      ];
+      if (stints.length > 0) {
+        const startTime = stints[stints.length - 1].end;
+        const endHour = parseInt(startTime.split(':')[0]) + 1;
+        const endTime = `${endHour.toString().padStart(2, '0')}:${startTime.split(':')[1]}`;
+
+        return [
+          ...stints,
+          new Stint({
+            id: stints.length + 1,
+            driver: 'driver',
+            start: startTime,
+            end: endTime,
+            isHeavy: false,
+          }),
+        ];
+      } else {
+        return [
+          ...stints,
+          new Stint({
+            id: stints.length + 1,
+            driver: 'driver',
+            start: '00:00',
+            end: '12:00',
+            isHeavy: false,
+          }),
+        ];
+      }
     });
   }
 }
