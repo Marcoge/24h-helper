@@ -1,4 +1,4 @@
-import { Component, Signal } from '@angular/core';
+import { Component, computed, Signal } from '@angular/core';
 import { DataService } from '../data.service';
 import { Summary } from '../model/summary';
 import { MatListModule } from '@angular/material/list';
@@ -11,6 +11,9 @@ import { MatListModule } from '@angular/material/list';
 })
 export class SummaryComponent {
   public summary: Signal<Summary>;
+  public totalDriverChanges = computed(() => {
+    return (this.dataService.stints().length - 1) >= 0? this.dataService.stints().length - 1 : 0;
+  });
 
   constructor(private dataService: DataService) {
     this.summary = this.dataService.summary;
@@ -27,6 +30,8 @@ export class SummaryComponent {
     if (!delta) {
       return '00';
     }
-    return Math.floor((delta / 1000 / 60) % 60).toString().padStart(2, '0');
+    return Math.floor((delta / 1000 / 60) % 60)
+      .toString()
+      .padStart(2, '0');
   }
 }
