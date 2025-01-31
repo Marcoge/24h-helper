@@ -1,10 +1,10 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 .header-bar {
   justify-content: center;
   border: 1px solid black;
   border-radius: 25px;
-  height: 50px; 
+  height: 50px;
 }
 
 .stint-list {
@@ -23,8 +23,10 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  @include mat.fab-overrides((
-    container-color: #005CBB,
-    foreground-color: white
-  ));
+  @include mat.fab-overrides(
+    (
+      container-color: #005cbb,
+      foreground-color: white,
+    )
+  );
 }
