@@ -1,24 +1,29 @@
 body {
-  margin: 0;
+  box-sizing: border-box;
+  margin:0;
+  padding: 0; 
   height: 100vh;
 }
 
 .main-container {
-  display: flex;
-  height: 100%;
-  color: --mat-sys-on-primary;
+  display: grid;
+  grid-template-columns: 300px 1fr; 
+  grid-template-rows: auto 1fr; 
+  height: 100vh; 
+  gap: 16px; 
+  overflow: hidden;
 }
 
 .left-side {
   display: flex;
+  grid-row: 1 / span 2;
   flex-direction: column;
-  width: 300px;
   background: #f0f0f0;
 }
 
 .driver-container {
   display: flex;
-  flex: 1;
+  flex: 0 0 auto;
   flex-direction: column;
   background: #e0e0e0;
   padding: 10px;
@@ -26,12 +31,17 @@ body {
 }
 
 .total-time-container {
-  flex: 2;
+  flex: 1 1 auto;
   background: #d0d0d0;
   padding: 20px;
+  overflow-y: auto; 
 }
 
 .main-content {
+  grid-column: 2;
+  grid-row: 1 / span 2; 
+  overflow-y: auto;
+  height: 100%;
   flex: 1;
   background: #ffffff;
   padding: 20px;
