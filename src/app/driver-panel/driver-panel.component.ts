@@ -13,7 +13,7 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 

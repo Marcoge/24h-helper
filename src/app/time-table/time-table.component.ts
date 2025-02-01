@@ -4,9 +4,9 @@ import { MatListModule } from '@angular/material/list';
 import { TimeTableEntryComponent } from '../time-table-entry/time-table-entry.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
-import { ThemeService } from '../theme.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-time-table',

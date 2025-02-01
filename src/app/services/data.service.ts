@@ -1,6 +1,6 @@
 import { computed, Injectable, Signal, signal } from '@angular/core';
-import { Stint } from './model/stint';
-import { Summary, DriverTotal } from './model/summary';
+import { Stint } from '../model/stint';
+import { Summary, DriverTotal } from '../model/summary';
 
 @Injectable({
   providedIn: 'root',

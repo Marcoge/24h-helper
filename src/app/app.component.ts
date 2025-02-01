@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { DriverPanelComponent } from './driver-panel/driver-panel.component';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { SummaryComponent } from './summary/summary.component';
-import { StorageService } from './storage.service';
-import { ThemeService } from './theme.service';
+import { StorageService } from './services/storage.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
