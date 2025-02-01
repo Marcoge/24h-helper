@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Stint } from '../model/stint';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -34,8 +36,8 @@ export class TimeTableEntryComponent {
   selectedDriver = '';
   startTime = '';
   endTime = '';
-  
-  constructor(private dataService: DataService) {}
+
+  constructor(private dataService: DataService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.selectedDriver = this.entry()?.driver ?? '';
@@ -68,11 +70,17 @@ export class TimeTableEntryComponent {
   }
 
   deleteStint() {
-    if (confirm('Are you sure you want to delete this entry?')) {
-      this.dataService.stints.update((value) => {
-        value.splice(value.indexOf(this.entry()), 1);
-        return [...value];
-      });
-    }
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { message: 'Are you sure you want to delete this stint?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.dataService.stints.update((value) => {
+          value.splice(value.indexOf(this.entry()), 1);
+          return [...value];
+        });
+      }
+    });
   }
 }

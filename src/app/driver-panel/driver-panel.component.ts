@@ -14,6 +14,8 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { DataService } from '../data.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-driver-panel',
@@ -35,7 +37,7 @@ export class DriverPanelComponent {
   public driver = '';
   public drivers;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private dialog: MatDialog) {
     this.drivers = this.dataService.drivers;
   }
 
@@ -46,12 +48,18 @@ export class DriverPanelComponent {
         return [...value];
       });
     } else {
-      if (confirm('Are you sure you want to remove this driver?')) {
-        this.dataService.drivers.update((value) => {
-          value.splice(event.previousIndex, 1);
-          return [...value];
-        });
-      }
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: { message: 'Are you sure you want to delete this driver?' },
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.dataService.drivers.update((value) => {
+            value.splice(event.previousIndex, 1);
+            return [...value];
+          });
+        }
+      });
     }
   }
 
