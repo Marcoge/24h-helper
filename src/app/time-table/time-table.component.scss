@@ -7,6 +7,25 @@
   height: 50px;
 }
 
+.toolbar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+button[mat-icon-button] {
+  position: absolute;
+  right: 8px;
+}
+
 .stint-list {
   display: flex;
   flex: 1;

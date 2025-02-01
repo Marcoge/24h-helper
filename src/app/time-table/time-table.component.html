@@ -1,5 +1,10 @@
 <mat-toolbar class="header-bar">
-  <span><b>Stints</b></span>
+  <div class="toolbar-content">
+    <span class="title"><b>Stints</b></span>
+    <button mat-icon-button  (click)="toggleTheme()">
+      <mat-icon>{{ isDarkTheme() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 <div class="list-container">
   <mat-list class="stint-list">

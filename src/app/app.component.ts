@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -7,6 +7,7 @@ import { DriverPanelComponent } from './driver-panel/driver-panel.component';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { SummaryComponent } from './summary/summary.component';
 import { StorageService } from './storage.service';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +25,13 @@ import { StorageService } from './storage.service';
 })
 export class AppComponent {
   title = '24h-helper';
+  private themeService = inject(ThemeService);
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService) {
+    effect(() => {
+      document.body.classList.toggle('darkMode', this.themeService.isDarkTheme());
+    });
+  }
 
   ngOnInit() {
     this.storageService.loadFromStorage();

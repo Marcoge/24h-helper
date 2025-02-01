@@ -18,13 +18,14 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: var(--mat-app-background-color);
 }
 
 .left-side {
   display: flex;
   grid-row: 1 / span 2;
   flex-direction: column;
-  background: #f0f0f0;
+  background-color: var(--mat-card-background-color);
 }
 
 .driver-container {
@@ -34,6 +35,11 @@ html, body {
   background: #e0e0e0;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.03);
+  
+  :host-context(.darkMode) & {
+    background-color: var(--mat-card-background-color);
+  }
 }
 
 .total-time-container {
@@ -41,6 +47,11 @@ html, body {
   background: #d0d0d0;
   padding: 20px;
   overflow-y: auto; 
+  background-color: rgba(0, 0, 0, 0.03);
+  
+  :host-context(.darkMode) & {
+    background-color: var(--mat-card-background-color);
+  }
 }
 
 .main-content {
@@ -51,4 +62,5 @@ html, body {
   flex: 1;
   background: #ffffff;
   padding: 20px;
+  background-color: var(--mat-card-background-color);
 }

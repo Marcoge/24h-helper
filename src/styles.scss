@@ -5,6 +5,58 @@
 
 @include cdk.overlay();
 
+// Custom Azure Palette
+$azure-palette: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2196f3,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: mat.m2-define-palette($azure-palette),
+    accent: mat.m2-define-palette($azure-palette),
+    warn: mat.m2-define-palette(mat.$m2-red-palette),
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: -1,
+));
+
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: mat.m2-define-palette($azure-palette),
+    accent: mat.m2-define-palette($azure-palette),
+    warn: mat.m2-define-palette(mat.$m2-red-palette),
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: -1,
+));
+
+@include mat.all-component-themes($light-theme);
+
+.darkMode {
+  @include mat.all-component-colors($dark-theme);
+}
+
 html {
   @include mat.theme(
     (
