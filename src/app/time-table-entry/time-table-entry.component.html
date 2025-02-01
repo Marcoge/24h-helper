@@ -3,6 +3,7 @@
     <mat-form-field>
       <mat-label>Driver</mat-label>
       <mat-select
+        class="driver-select"
         [(ngModel)]="selectedDriver"
         name="driverSelect"
         (ngModelChange)="onDriverSelected($event)"
