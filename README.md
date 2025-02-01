@@ -8,13 +8,14 @@ Ths app is meant to help particpants of the 24 hour kart race in Grimma, Germany
 - Driver list can be reordered at any time.
 - Driver order will be taken into account when calculating total times.
 - Add stints with the floating fab in the lower right corner.
-- The app checks that only syntactically correct times (00:00 - 24:00) are accepted.
-- There are curently no sanity checks for overlapping stints or stints that have a negative duration.
+- There are currently no sanity checks for overlapping stints or stints that have a negative duration.
+- Dark mode can be enabled by button in the upper right corner.
+- The electron version is not signed. 
 
 ## Rules
 The rules implemented for total driving time and delta between drivers are according to the latest ruleset for the Grimma 24 hour kart race. 
 
-- The delta of time spent on track for drivers 1 through 5 must not be greater than one (1) hour. Drivers 6 and up are not taken into consideration for this calculation.
+- The delta of time spent on track for drivers 1 through 5 must not be greater than one (1) hour. Drivers 6 and following are not taken into consideration for this calculation.
 - Time spent driving heavy turns must be at least four (4) hours.
 
 ## Development
