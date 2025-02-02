@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { TimeTableEntryComponent } from '../time-table-entry/time-table-entry.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
 import { ThemeService } from '../services/theme.service';
@@ -16,6 +17,7 @@ import { ThemeService } from '../services/theme.service';
     TimeTableEntryComponent,
     MatButtonModule,
     MatIconModule,
+    CommonModule
   ],
   templateUrl: './time-table.component.html',
   styleUrl: './time-table.component.scss',

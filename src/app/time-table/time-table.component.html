@@ -1,8 +1,10 @@
 <mat-toolbar class="header-bar">
   <div class="toolbar-content">
     <span class="title"><b>Stints</b></span>
-    <button mat-icon-button  (click)="toggleTheme()">
-      <mat-icon>{{ isDarkTheme() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }">{{
+        isDarkTheme() ? "light_mode" : "dark_mode"
+      }}</mat-icon>
     </button>
   </div>
 </mat-toolbar>
