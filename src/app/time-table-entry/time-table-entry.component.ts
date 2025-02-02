@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  input,
+  inject,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
@@ -8,10 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -25,6 +32,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
     MatSelectModule,
     MatButtonModule,
     FormsModule,
+    CommonModule,
   ],
   templateUrl: './time-table-entry.component.html',
   styleUrl: './time-table-entry.component.scss',
@@ -32,6 +40,8 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 })
 export class TimeTableEntryComponent {
   entry = input.required<Stint>();
+  private themeService = inject(ThemeService);
+  isDarkTheme = this.themeService.isDarkTheme;
   names = this.dataService.drivers;
   selectedDriver = '';
   startTime = '';

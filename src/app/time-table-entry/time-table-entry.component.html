@@ -22,7 +22,11 @@
           [(ngModel)]="startTime"
           (ngModelChange)="onStartChanged($event)"
         />
-        <mat-icon matSuffix>watch_later</mat-icon>
+        <mat-icon
+          matSuffix
+          [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }"
+          >watch_later</mat-icon
+        >
       </mat-form-field>
     </div>
     <div>
@@ -35,7 +39,11 @@
           name="endTime"
           (ngModelChange)="onEndChanged($event)"
         />
-        <mat-icon matSuffix>watch_later</mat-icon>
+        <mat-icon
+          matSuffix
+          [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }"
+          >watch_later</mat-icon
+        >
       </mat-form-field>
     </div>
     <div>
