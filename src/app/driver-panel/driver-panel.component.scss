@@ -1,5 +1,5 @@
-@use 'sass:color';
-@use '@angular/material' as mat;
+@use "sass:color";
+@use "@angular/material" as mat;
 
 body {
   margin: 0;
@@ -47,12 +47,8 @@ button[mat-flat-button] {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  color: var(--mat-primary-text-color);
   transition: background-color 0.2s ease;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
   font-size: 14px;
-  z-index: 1;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.12);
@@ -64,10 +60,10 @@ button[mat-flat-button] {
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.87);
     }
   }
 }
-
 
 .cdk-drag-preview {
   border: none;
@@ -93,10 +89,6 @@ button[mat-flat-button] {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.driver-box:hover {
-  background: #f0f0f0;
-}
-
 .driver-handle {
   cursor: move;
   color: color.adjust($color: blue, $saturation: -65%);
@@ -109,8 +101,8 @@ button[mat-flat-button] {
 }
 
 .delete-fab {
-  --mdc-fab-container-color: #FFC107 !important;
+  --mdc-fab-container-color: #ffc107 !important;
   --mdc-fab-icon-color: #000 !important;
   --mat-fab-foreground-color: #000 !important;
-  --mat-fab-background-color: #FFC107 !important;
+  --mat-fab-background-color: #ffc107 !important;
 }
