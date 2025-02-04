@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@use '@angular/material' as mat;
-@use '@angular/cdk' as cdk;
+@use "@angular/material" as mat;
+@use "@angular/cdk" as cdk;
 @include mat.core();
 
 @include cdk.overlay();
@@ -28,28 +28,32 @@ $azure-palette: (
     700: white,
     800: white,
     900: white,
+  ),
+);
+
+$light-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: mat.m2-define-palette($azure-palette),
+      accent: mat.m2-define-palette($azure-palette),
+      warn: mat.m2-define-palette(mat.$m2-red-palette),
+    ),
+    typography: mat.m2-define-typography-config(),
+    density: -1,
   )
 );
 
-$light-theme: mat.m2-define-light-theme((
-  color: (
-    primary: mat.m2-define-palette($azure-palette),
-    accent: mat.m2-define-palette($azure-palette),
-    warn: mat.m2-define-palette(mat.$m2-red-palette),
-  ),
-  typography: mat.m2-define-typography-config(),
-  density: -1,
-));
-
-$dark-theme: mat.m2-define-dark-theme((
-  color: (
-    primary: mat.m2-define-palette($azure-palette),
-    accent: mat.m2-define-palette($azure-palette),
-    warn: mat.m2-define-palette(mat.$m2-red-palette),
-  ),
-  typography: mat.m2-define-typography-config(),
-  density: -1,
-));
+$dark-theme: mat.m2-define-dark-theme(
+  (
+    color: (
+      primary: mat.m2-define-palette($azure-palette),
+      accent: mat.m2-define-palette($azure-palette),
+      warn: mat.m2-define-palette(mat.$m2-red-palette),
+    ),
+    typography: mat.m2-define-typography-config(),
+    density: -1,
+  )
+);
 
 @include mat.all-component-themes($light-theme);
 
@@ -65,6 +69,37 @@ html {
       density: -1,
     )
   );
+}
+
+@media screen and (orientation: portrait) {
+  body {
+    visibility: hidden;
+  }
+
+  body::after {
+    content: "Please rotate your device to landscape mode";
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--mat-card-background-color);
+    color: var(--mat-primary-text-color);
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 2rem;
+    z-index: 9999;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  body {
+    visibility: visible;
+  }
 }
 
 body {
