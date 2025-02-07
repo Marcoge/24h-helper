@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>How to use</h2>
+<mat-dialog-content>
+  <ul>
+    <li>
+      <b>Add driver</b> by filling in the name in the top left corner and press
+      enter or click "Add" button.
+    </li>
+    <li>
+      <b>Reorder driver list</b> by dragging the driver item with the arrow
+      icon.
+    </li>
+    <li>
+      <b>Delete driver</b> by dragging the driver item to the bin icon below the
+      driver list.
+    </li>
+    <li>
+      <b>Add Stint</b> by clicking the floatin button in the bottom right
+      corner.
+    </li>
+    <li>
+      <b>Darkmode</b> can be enabled/disabled with the toggle in the top right.
+    </li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <mat-checkbox [(ngModel)]="dontShowAgain">Don't show again</mat-checkbox>
+  <button mat-button (click)="onYesClick()">Ok</button>
+</mat-dialog-actions>
