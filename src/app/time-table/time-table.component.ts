@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
 import { ConfigService } from '../services/config.service';
+import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-time-table',
@@ -17,7 +19,7 @@ import { ConfigService } from '../services/config.service';
     TimeTableEntryComponent,
     MatButtonModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './time-table.component.html',
   styleUrl: './time-table.component.scss',
@@ -25,12 +27,19 @@ import { ConfigService } from '../services/config.service';
 export class TimeTableComponent {
   stints = this.dataService.stints;
   private themeService = inject(ConfigService);
+  private dialog = inject(MatDialog);
   isDarkTheme = this.themeService.isDarkTheme;
 
   constructor(private dataService: DataService) {}
 
   toggleTheme() {
     this.themeService.toggleTheme();
+  }
+
+  openInfoDialog() {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
+      autoFocus: 'okButton',
+    });
   }
 
   addStint() {

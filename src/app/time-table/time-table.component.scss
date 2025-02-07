@@ -21,9 +21,14 @@
   transform: translateX(-50%);
 }
 
-button[mat-icon-button] {
+.dark-mode-toggle {
   position: absolute;
-  right: 8px;
+  right: 40px;
+}
+
+.info-button {
+  position: absolute;
+  right: 0px;
 }
 
 .stint-list {
