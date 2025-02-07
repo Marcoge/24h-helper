@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
-import { ThemeService } from '../services/theme.service';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-time-table',
@@ -24,7 +24,7 @@ import { ThemeService } from '../services/theme.service';
 })
 export class TimeTableComponent {
   stints = this.dataService.stints;
-  private themeService = inject(ThemeService);
+  private themeService = inject(ConfigService);
   isDarkTheme = this.themeService.isDarkTheme;
 
   constructor(private dataService: DataService) {}

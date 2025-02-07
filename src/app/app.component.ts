@@ -7,7 +7,7 @@ import { DriverPanelComponent } from './driver-panel/driver-panel.component';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { SummaryComponent } from './summary/summary.component';
 import { StorageService } from './services/storage.service';
-import { ThemeService } from './services/theme.service';
+import { ConfigService } from './services/config.service';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -27,7 +27,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppComponent {
   title = '24h-helper';
-  private themeService = inject(ThemeService);
+  private themeService = inject(ConfigService);
   private dialog = inject(MatDialog);
 
   constructor(private storageService: StorageService) {
@@ -45,6 +45,8 @@ export class AppComponent {
   }
 
   private showInfoDialog() {
-    const dialogRef = this.dialog.open(InfoDialogComponent, {});
+    if (!this.themeService.dontShowInfoDialog()) {
+      const dialogRef = this.dialog.open(InfoDialogComponent, {});
+    }
   }
 }

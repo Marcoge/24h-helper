@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { ThemeService } from '../services/theme.service';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -40,7 +40,7 @@ import { ThemeService } from '../services/theme.service';
 })
 export class TimeTableEntryComponent {
   entry = input.required<Stint>();
-  private themeService = inject(ThemeService);
+  private themeService = inject(ConfigService);
   isDarkTheme = this.themeService.isDarkTheme;
   names = this.dataService.drivers;
   selectedDriver = '';
