@@ -27,7 +27,7 @@ import { ConfigService } from '../../services/config.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoDialogComponent {
-  public dontShowAgain = model(false);
+  public dontShowAgain = model(this.configService.dontShowInfoDialog());
 
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
