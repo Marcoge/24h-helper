@@ -46,7 +46,9 @@ export class AppComponent {
 
   private showInfoDialog() {
     if (!this.themeService.dontShowInfoDialog()) {
-      const dialogRef = this.dialog.open(InfoDialogComponent, {});
+      const dialogRef = this.dialog.open(InfoDialogComponent, {
+        autoFocus: 'okButton',
+      });
     }
   }
 }
