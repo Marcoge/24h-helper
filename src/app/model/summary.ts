@@ -1,9 +1,9 @@
 export class Summary {
   totalTimes: DriverTotal[];
-  delta: String;
+  delta: string;
   heavyTotal: number;
 
-  constructor(driver: DriverTotal[], delta: String) {
+  constructor(driver: DriverTotal[], delta: string) {
     this.totalTimes = driver;
     this.delta = delta;
     this.heavyTotal = 0;
@@ -11,6 +11,6 @@ export class Summary {
 }
 
 export interface DriverTotal {
-  driver: String;
+  driver: string;
   total: number;
 }

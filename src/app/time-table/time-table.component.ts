@@ -36,7 +36,7 @@ export class TimeTableComponent {
   }
 
   openInfoDialog() {
-    const dialogRef = this.dialog.open(InfoDialogComponent, {
+    this.dialog.open(InfoDialogComponent, {
       autoFocus: 'okButton',
     });
   }

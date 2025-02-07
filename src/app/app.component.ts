@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, OnInit, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -25,7 +25,7 @@ import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = '24h-helper';
   private themeService = inject(ConfigService);
   private dialog = inject(MatDialog);
@@ -47,7 +47,7 @@ export class AppComponent {
 
   private showInfoDialog() {
     if (!this.themeService.dontShowInfoDialog()) {
-      const dialogRef = this.dialog.open(InfoDialogComponent, {
+      this.dialog.open(InfoDialogComponent, {
         autoFocus: 'okButton',
       });
     }

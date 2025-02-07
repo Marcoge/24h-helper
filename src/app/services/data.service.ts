@@ -6,7 +6,7 @@ import { Summary, DriverTotal } from '../model/summary';
   providedIn: 'root',
 })
 export class DataService {
-  public drivers = signal<String[]>([]);
+  public drivers = signal<string[]>([]);
   public stints = signal<Stint[]>([]);
 
   public summary: Signal<Summary> = computed(() => {
@@ -14,11 +14,11 @@ export class DataService {
   });
 
   private computeSummary(stintList: Stint[]): Summary {
-    let summary = new Summary([], '00:00');
+    const summary = new Summary([], '00:00');
     let start: Date;
     let end: Date;
     const drivers = this.drivers();
-    let totalMap = new Map<String, number>();
+    const totalMap = new Map<string, number>();
     stintList.forEach((x) => {
       if (
         //special case for stints that start before and end after midnight
@@ -31,7 +31,7 @@ export class DataService {
         start = new Date(`2021-01-01T${x.start}:00`);
         end = new Date(`2021-01-01T${x.end}:00`);
       }
-      let totalTime = end.getTime() - start.getTime();
+      const totalTime = end.getTime() - start.getTime();
       if (x.isHeavy) {
         summary.heavyTotal += totalTime;
       }
@@ -48,7 +48,7 @@ export class DataService {
     return summary;
   }
 
-  private calculateDelta(totalTimes: DriverTotal[]): String {
+  private calculateDelta(totalTimes: DriverTotal[]): string {
     let truncDriver = totalTimes;
     if (totalTimes.length > 5) {
       truncDriver = totalTimes.slice(0, 5);

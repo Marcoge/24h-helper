@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   input,
   inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +39,7 @@ import { Stint } from '../model/stint';
   styleUrl: './time-table-entry.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimeTableEntryComponent {
+export class TimeTableEntryComponent implements OnInit {
   private dataService = inject(DataService);
   private themeService = inject(ConfigService);
   private dialog = inject(MatDialog);

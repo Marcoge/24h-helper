@@ -22,14 +22,14 @@ export class SummaryComponent {
     this.summary = this.dataService.summary;
   }
 
-  getHours(delta: number): String {
+  getHours(delta: number): string {
     if (!delta) {
       return '0';
     }
     return Math.floor(delta / 1000 / 60 / 60).toString();
   }
 
-  getMinutes(delta: number): String {
+  getMinutes(delta: number): string {
     if (!delta) {
       return '00';
     }
