@@ -1,7 +1,7 @@
-import { Component, computed, Signal } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
 import { DataService } from '../services/data.service';
 import { Summary } from '../model/summary';
-import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-summary',
@@ -10,12 +10,15 @@ import { MatListModule } from '@angular/material/list';
   styleUrl: './summary.component.scss',
 })
 export class SummaryComponent {
+  private dataService = inject(DataService);
   public summary: Signal<Summary>;
   public totalDriverChanges = computed(() => {
-    return (this.dataService.stints().length - 1) >= 0? this.dataService.stints().length - 1 : 0;
+    return this.dataService.stints().length - 1 >= 0
+      ? this.dataService.stints().length - 1
+      : 0;
   });
 
-  constructor(private dataService: DataService) {
+  constructor() {
     this.summary = this.dataService.summary;
   }
 

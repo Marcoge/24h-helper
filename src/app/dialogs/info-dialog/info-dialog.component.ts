@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, model } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  model,
+} from '@angular/core';
 import {
   MatDialogActions,
   MatDialogContent,
@@ -27,12 +32,9 @@ import { ConfigService } from '../../services/config.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoDialogComponent {
+  public dialogRef = inject(MatDialogRef<InfoDialogComponent>);
+  private configService = inject(ConfigService);
   public dontShowAgain = model(this.configService.dontShowInfoDialog());
-
-  constructor(
-    public dialogRef: MatDialogRef<InfoDialogComponent>,
-    private configService: ConfigService
-  ) {}
 
   onYesClick(): void {
     this.configService.dontShowInfoDialog.set(this.dontShowAgain());

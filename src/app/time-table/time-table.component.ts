@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { TimeTableEntryComponent } from '../time-table-entry/time-table-entry.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../services/data.service';
-import { Stint } from '../model/stint';
 import { ConfigService } from '../services/config.service';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Stint } from '../model/stint';
 
 @Component({
   selector: 'app-time-table',
@@ -25,12 +25,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './time-table.component.scss',
 })
 export class TimeTableComponent {
-  stints = this.dataService.stints;
+  private dataService = inject(DataService);
   private themeService = inject(ConfigService);
   private dialog = inject(MatDialog);
+  stints = this.dataService.stints;
   isDarkTheme = this.themeService.isDarkTheme;
-
-  constructor(private dataService: DataService) {}
 
   toggleTheme() {
     this.themeService.toggleTheme();

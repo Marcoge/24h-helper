@@ -1,4 +1,4 @@
-import { effect, Injectable } from '@angular/core';
+import { effect, inject, Injectable } from '@angular/core';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -9,10 +9,9 @@ export class StorageService {
    * The state protection variables are a workaround for the fact that the effects are triggered
    * on startup and would overwrite the local storage with empty arrays losing the saved states.
    */
+  private dataService = inject(DataService);
   private stateProtectionOnLoadDriver = true;
   private stateProtectionOnLoadStint = true;
-
-  constructor(private dataService: DataService) {}
 
   private driverStorageEffect = effect(() => {
     if (

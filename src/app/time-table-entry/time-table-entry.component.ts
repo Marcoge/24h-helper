@@ -15,10 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DataService } from '../services/data.service';
-import { Stint } from '../model/stint';
 import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
+import { DataService } from '../services/data.service';
 import { ConfigService } from '../services/config.service';
+import { Stint } from '../model/stint';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -39,15 +39,15 @@ import { ConfigService } from '../services/config.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeTableEntryComponent {
-  entry = input.required<Stint>();
+  private dataService = inject(DataService);
   private themeService = inject(ConfigService);
+  private dialog = inject(MatDialog);
+  entry = input.required<Stint>();
   isDarkTheme = this.themeService.isDarkTheme;
   names = this.dataService.drivers;
   selectedDriver = '';
   startTime = '';
   endTime = '';
-
-  constructor(private dataService: DataService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.selectedDriver = this.entry()?.driver ?? '';

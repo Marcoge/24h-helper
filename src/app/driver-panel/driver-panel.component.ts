@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,7 +13,6 @@ import {
   CdkDragHandle,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-
 import { DataService } from '../services/data.service';
 import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
 
@@ -34,10 +33,12 @@ import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog
   styleUrl: './driver-panel.component.scss',
 })
 export class DriverPanelComponent {
+  private dataService = inject(DataService);
+  private dialog = inject(MatDialog);
   public driver = '';
   public drivers;
 
-  constructor(private dataService: DataService, private dialog: MatDialog) {
+  constructor() {
     this.drivers = this.dataService.drivers;
   }
 

@@ -13,8 +13,6 @@ export class DataService {
     return this.computeSummary(this.stints());
   });
 
-  constructor() {}
-
   private computeSummary(stintList: Stint[]): Summary {
     let summary = new Summary([], '00:00');
     let start: Date;
