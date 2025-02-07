@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../services/data.service';
 import { Stint } from '../model/stint';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
 import { ConfigService } from '../services/config.service';
 
 @Component({
