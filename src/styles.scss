@@ -61,16 +61,6 @@ $dark-theme: mat.m2-define-dark-theme(
   @include mat.all-component-colors($dark-theme);
 }
 
-html {
-  @include mat.theme(
-    (
-      color: mat.$azure-palette,
-      typography: Roboto,
-      density: -1,
-    )
-  );
-}
-
 @media screen and (orientation: portrait) {
   body {
     visibility: hidden;
@@ -100,6 +90,16 @@ html {
   body {
     visibility: visible;
   }
+}
+
+html {
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: -1,
+    )
+  );
 }
 
 body {
