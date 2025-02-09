@@ -8,7 +8,9 @@
         [(ngModel)]="driver"
       />
     </mat-form-field>
-    <button mat-flat-button (click)="addDriver()">Add</button>
+    <button mat-flat-button (click)="addDriver()" [disabled]="!driver.trim()">
+      Add
+    </button>
   </div>
   <mat-divider></mat-divider>
   <div
