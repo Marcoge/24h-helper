@@ -66,8 +66,8 @@ export class TimeTableComponent {
           new Stint({
             id: stints.length + 1,
             driver: 'driver',
-            start: '00:00',
-            end: '12:00',
+            start: '14:00',
+            end: '15:00',
             isHeavy: false,
           }),
         ];
