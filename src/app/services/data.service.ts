@@ -50,8 +50,8 @@ export class DataService {
 
   private calculateDelta(totalTimes: DriverTotal[]): string {
     let truncDriver = totalTimes;
-    if (totalTimes.length > 5) {
-      truncDriver = totalTimes.slice(0, 5);
+    if (totalTimes.length > 4) {
+      truncDriver = totalTimes.slice(0, 4);
     }
     const min = Math.min(...truncDriver.map((x) => x.total));
     const max = Math.max(...truncDriver.map((x) => x.total));
