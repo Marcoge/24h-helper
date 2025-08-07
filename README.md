@@ -4,8 +4,9 @@ This app is designed to assist participants of the 24-hour kart race in Grimma, 
 
 ## Usage and constraints
 
-- Add a Driver on the top left.
-- Driver list can be reordered at any time.
+- Add a Driver in the top left.
+- Driver list can be reordered at any time by dragging with the arrow icon.
+- Delete a driver by dragging their name over the trash icon.
 - Driver order will be taken into account when calculating total times.
 - Add stints with the floating fab in the lower right corner.
 - There are no sanity checks for overlapping stints or stints that have a negative duration.
