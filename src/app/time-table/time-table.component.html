@@ -13,13 +13,13 @@
     </button>
     <button
       mat-icon-button
-      matTooltip="Toggle planning mode"
+      matTooltip="Toggle planning/live mode"
       class="planning-button"
       (click)="togglePlanning()"
     >
-      <mat-icon [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }"
-        >history</mat-icon
-      >
+      <mat-icon [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }">{{
+        isPlanningMode ? "assignment" : "assignment_late"
+      }}</mat-icon>
     </button>
     <button
       mat-icon-button

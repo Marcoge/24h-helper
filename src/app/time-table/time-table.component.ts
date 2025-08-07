@@ -34,6 +34,7 @@ export class TimeTableComponent {
   private dialog = inject(MatDialog);
   stints = this.dataService.stints;
   isDarkTheme = this.themeService.isDarkTheme;
+  isPlanningMode = false;
 
   toggleTheme() {
     this.themeService.toggleTheme();
@@ -47,6 +48,7 @@ export class TimeTableComponent {
 
   togglePlanning() {
     this.storageService.togglePlanningMode();
+    this.isPlanningMode = !this.isPlanningMode;
   }
 
   addStint() {
