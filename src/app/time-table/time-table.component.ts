@@ -6,6 +6,7 @@ import { TimeTableEntryComponent } from '../time-table-entry/time-table-entry.co
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DataService } from '../services/data.service';
 import { ConfigService } from '../services/config.service';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
@@ -19,6 +20,7 @@ import { Stint } from '../model/stint';
     TimeTableEntryComponent,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
     CommonModule,
   ],
   templateUrl: './time-table.component.html',
@@ -40,6 +42,8 @@ export class TimeTableComponent {
       autoFocus: 'okButton',
     });
   }
+
+  togglePlanning() {}
 
   addStint() {
     this.dataService.stints.update((stints) => {
