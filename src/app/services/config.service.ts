@@ -10,6 +10,7 @@ export class ConfigService {
   dontShowInfoDialog = signal<boolean>(
     localStorage.getItem('dontShowInfoDialog') === 'true' || false
   );
+  isPlanningMode = signal<boolean>(false);
 
   constructor() {
     effect(() => {
@@ -26,5 +27,9 @@ export class ConfigService {
 
   toggleInfoDialog() {
     this.dontShowInfoDialog.update((current) => !current);
+  }
+
+  togglePlanningMode() {
+    this.isPlanningMode.update((current) => !current);
   }
 }

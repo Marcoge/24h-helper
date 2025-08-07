@@ -49,6 +49,7 @@ export class TimeTableComponent {
   togglePlanning() {
     this.storageService.togglePlanningMode();
     this.isPlanningMode = !this.isPlanningMode;
+    this.themeService.togglePlanningMode();
   }
 
   addStint() {

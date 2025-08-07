@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
   private themeService = inject(ConfigService);
   private dialog = inject(MatDialog);
   private storageService = inject(StorageService);
+  isPlanningMode = this.themeService.isPlanningMode;
 
   constructor() {
     effect(() => {
