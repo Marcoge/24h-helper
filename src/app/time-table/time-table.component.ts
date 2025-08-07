@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DataService } from '../services/data.service';
+import { StorageService } from '../services/storage.service';
 import { ConfigService } from '../services/config.service';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
 import { Stint } from '../model/stint';
@@ -29,6 +30,7 @@ import { Stint } from '../model/stint';
 export class TimeTableComponent {
   private dataService = inject(DataService);
   private themeService = inject(ConfigService);
+  private storageService = inject(StorageService);
   private dialog = inject(MatDialog);
   stints = this.dataService.stints;
   isDarkTheme = this.themeService.isDarkTheme;
@@ -43,7 +45,9 @@ export class TimeTableComponent {
     });
   }
 
-  togglePlanning() {}
+  togglePlanning() {
+    this.storageService.togglePlanningMode();
+  }
 
   addStint() {
     this.dataService.stints.update((stints) => {

@@ -12,6 +12,7 @@ export class StorageService {
   private dataService = inject(DataService);
   private stateProtectionOnLoadDriver = true;
   private stateProtectionOnLoadStint = true;
+  private planningMode = false;
 
   constructor() {
     // Store drivers
@@ -30,12 +31,13 @@ export class StorageService {
 
     // Store stints
     effect(() => {
+      const stintStorage = this.planningMode ? 'planning' : 'stints';
       if (
         this.dataService.stints().length > 0 ||
         !this.stateProtectionOnLoadStint
       ) {
         localStorage.setItem(
-          'stints',
+          stintStorage,
           JSON.stringify(this.dataService.stints())
         );
         this.stateProtectionOnLoadStint = false;
@@ -44,15 +46,21 @@ export class StorageService {
   }
 
   public loadFromStorage() {
+    const stintStorage = this.planningMode ? 'planning' : 'stints';
     this.dataService.drivers.set(
       localStorage.getItem('drivers')
         ? JSON.parse(localStorage.getItem('drivers')!)
         : []
     );
     this.dataService.stints.set(
-      localStorage.getItem('stints')
-        ? JSON.parse(localStorage.getItem('stints')!)
+      localStorage.getItem(stintStorage)
+        ? JSON.parse(localStorage.getItem(stintStorage)!)
         : []
     );
+  }
+
+  public togglePlanningMode() {
+    this.planningMode = !this.planningMode;
+    this.loadFromStorage();
   }
 }
