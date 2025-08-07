@@ -1,6 +1,6 @@
 # 24hHelper
 
-Ths app is meant to help particpants of the 24 hour kart race in Grimma, Germany with the constraints put on the time a driver has to spent racing in relation to his/her teammates. See Rules chapter for further info.
+This app is designed to assist participants of the 24-hour kart race in Grimma, Germany, by helping manage the time restrictions placed on drivers. For more details, refer to the Rules section.
 
 ## Usage and constraints
 
@@ -9,8 +9,8 @@ Ths app is meant to help particpants of the 24 hour kart race in Grimma, Germany
 - Driver order will be taken into account when calculating total times.
 - Add stints with the floating fab in the lower right corner.
 - There are no sanity checks for overlapping stints or stints that have a negative duration.
-- Dark mode can be enabled by button in the upper right corner.
 - PLANNING MODE can be enabled by clicking the (middle) toggle in the top right. In this mode you can plan for the drivers. They will be stored seperately. Planning mode is signified by a red background.
+- Dark mode can be enabled by button in the upper right corner.
 - The electron version is not signed (meaning Windows will warn the user when starting the application).
 
 ## Rules
