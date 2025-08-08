@@ -1,5 +1,6 @@
 import { effect, inject, Injectable } from '@angular/core';
 import { DataService } from './data.service';
+import { Stint } from '../model/stint';
 
 @Injectable({
   providedIn: 'root',
@@ -52,15 +53,20 @@ export class StorageService {
         ? JSON.parse(localStorage.getItem('drivers')!)
         : []
     );
-    this.dataService.stints.set(
-      localStorage.getItem(stintStorage)
-        ? JSON.parse(localStorage.getItem(stintStorage)!)
-        : []
-    );
+    const rawStints = localStorage.getItem(stintStorage)
+      ? JSON.parse(localStorage.getItem(stintStorage)!)
+      : [];
+    this.dataService.stints.set([]);
+    this.dataService.stints.set(rawStints.map((stint: any) => new Stint(stint)));
   }
 
   public togglePlanningMode() {
     this.planningMode = !this.planningMode;
     this.loadFromStorage();
   }
+
+  public getStintsFromStorage(key: string): Stint[] {
+    return JSON.parse(localStorage.getItem(key) || '[]');
+  }
 }
+

@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DataService } from '../services/data.service';
 import { StorageService } from '../services/storage.service';
 import { ConfigService } from '../services/config.service';
@@ -22,6 +23,7 @@ import { Stint } from '../model/stint';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatSnackBarModule,
     CommonModule,
   ],
   templateUrl: './time-table.component.html',
@@ -32,6 +34,7 @@ export class TimeTableComponent {
   private themeService = inject(ConfigService);
   private storageService = inject(StorageService);
   private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
   stints = this.dataService.stints;
   isDarkTheme = this.themeService.isDarkTheme;
   isPlanningMode = false;
@@ -50,6 +53,28 @@ export class TimeTableComponent {
     this.storageService.togglePlanningMode();
     this.isPlanningMode = !this.isPlanningMode;
     this.themeService.togglePlanningMode();
+  }
+
+  syncStints() {
+    const liveStints = this.storageService.getStintsFromStorage('stints');
+    const planningStints = [...this.dataService.stints()];
+
+    if (liveStints.length == 0) {
+      return;
+    }
+
+    for (let i = 0; i < liveStints.length; i++) {
+      if (planningStints.length < i) {
+        planningStints.push(new Stint(liveStints[i]));
+        continue;
+      }
+      planningStints[i] = liveStints[i];
+    }
+    this.dataService.stints.set(planningStints);
+    this.snackBar.open('Stints are now in sync with live!', 'Close', {
+      // Added snackbar
+      duration: 3000, // Snackbar will be visible for 3 seconds
+    });
   }
 
   addStint() {

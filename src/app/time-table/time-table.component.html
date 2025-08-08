@@ -3,6 +3,17 @@
     <span class="title"><b>Stints</b></span>
     <button
       mat-icon-button
+      matTooltip="Sync stints from live"
+      class="sync-button"
+      [hidden]="!isPlanningMode"
+      (click)="syncStints()"
+    >
+      <mat-icon [ngStyle]="{ color: isDarkTheme() ? '#ffffff' : '#000000' }"
+        >sync
+      </mat-icon>
+    </button>
+    <button
+      mat-icon-button
       matTooltip="Toggle dark/light mode"
       class="dark-mode-toggle"
       (click)="toggleTheme()"
