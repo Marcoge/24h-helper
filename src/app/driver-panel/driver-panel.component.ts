@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +20,7 @@ import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog
 @Component({
   selector: 'app-driver-panel',
   imports: [
+  CommonModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
@@ -37,6 +39,7 @@ export class DriverPanelComponent {
   private dialog = inject(MatDialog);
   public driver = '';
   public drivers;
+  public collapsed = false; // controls vertical collapse state
 
   constructor() {
     this.drivers = this.dataService.drivers;
@@ -71,5 +74,9 @@ export class DriverPanelComponent {
       this.dataService.drivers.update((drivers) => [...drivers, this.driver]);
       this.driver = '';
     }
+  }
+
+  toggleCollapsed() {
+    this.collapsed = !this.collapsed;
   }
 }

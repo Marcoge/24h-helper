@@ -9,6 +9,52 @@
   gap: 10px;
 }
 
+.collapse-toggle {
+  align-self: flex-end;
+  margin: -4px -4px 0 0;
+  width: 32px;
+  height: 32px;
+  transition: background-color 120ms ease, border-color 120ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+  &:focus-visible {
+    outline: 2px solid #2196f3;
+    outline-offset: 2px;
+  }
+}
+
+.collapse-toggle mat-icon {
+  margin: 0;
+  line-height: 1;
+}
+
+:host-context(.darkMode) .collapse-toggle {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.9);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+.driver-panel-container.collapsed {
+  // keep only the add bar visible; height shrink naturally
+  .collapsible-content {
+    display: none;
+  }
+}
+
 button[mat-flat-button] {
   --mdc-filled-button-container-color: #2196f3;
   --mdc-filled-button-label-text-color: #fff;
